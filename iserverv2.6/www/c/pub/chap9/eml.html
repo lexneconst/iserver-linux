@@ -1,0 +1,38 @@
+<html>
+<head>
+
+<script src="/ajaxbook/ajax_framework.js"> </script>
+
+<script>
+function sendMail() {
+	var URL = "eml_ss.php";
+	
+	var data = getFormData("frm");	//getFormData() อยู่ใน ajax_framework.js
+	
+	ajaxLoad('post', URL, data, 'DisplayDiv');
+}
+</script>
+
+</head>
+<body>
+<h3>Ajax Mail</h3>
+
+<form id="frm" name="frm">
+อีเมล์ผู้ส่ง:<br>
+<input type="text" id="from" size="30">
+<br>
+อีเมล์ผู้รับ:<br>
+<input type="text" id="to" size="30">
+<br>
+หัวข้อ:<br>
+<input type="text" id="subject" size="50" maxlength="150">
+<br>
+รายละเอียด:<br>
+<textarea id="message" cols="50" rows="3"></textarea>
+<p>
+<button onclick="sendMail()">ส่งอีเมล์</button>
+</form>
+
+<div id="displayDiv"></div>
+</body>
+</html>

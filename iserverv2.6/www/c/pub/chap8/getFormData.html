@@ -1,0 +1,107 @@
+<html>
+<head>
+<script>
+function getFormData(form_name_or_id) {
+	
+	var frm = document.forms[form_name_or_id];
+	if(frm==null) {
+		alert("form not found!");
+		return;
+	}
+
+	var data = "";
+	var num_el = frm.elements.length;
+	for(i=0; i<num_el; i++) {
+		var el = frm.elements[i];
+		if(el.name=="" && el.id=="") {
+			continue;
+		}
+		var param_name = "";
+		if(el.name!="") {
+			data += el.name;
+			param_name = el.name;
+		}
+		else if(el.id!="") {
+			data += el.id;
+			param_name = el.id;
+		}
+
+		var t = frm.elements[i].type;
+		var value = "";
+		if(t=="text"||t=="password"||t=="hidden"||t=="textarea") {
+			value = encodeURI(el.value);
+		}
+		else if(t=="radio"||t=="checkbox") {
+			if(el.checked) {
+				value = encodeURI(el.value);
+			}
+			else {
+				continue;
+			}
+		}
+		else if(t=="select-one") {
+			value = encodeURI(el.options[el.selectedIndex].value);
+		}
+		else if(t=="select-multiple") {
+			for(j=0; j<el.length; j++) {
+				if(el.options[j].selected) {
+					if(data!="") {
+						data += "&";
+					}
+					data += param_name + "=";
+					data += encodeURI(el.options[j].value);
+				}
+			}
+			
+			continue;
+		}
+
+		//หากมีข้อมูลอยู่ก่อนแล้ว ให้คั่นด้วยเครื่องหมาย "&"
+		if(data!="") {
+			data += "&";
+		}
+
+		data += "=" + value;
+	}
+
+	return data;
+
+}
+
+
+function getData(form_name) {
+	var data = getFormData(form_name);
+	alert(data);
+}
+</script>
+</head>
+
+<body>
+Form1:
+<form name="f1">
+	<input type="text" name="txt"><br>
+	<input type="hidden" name="hdd" value="xml">
+	<input type="checkbox" name="chk1" value="Ajax">Ajax
+	<input type="checkbox" name="chk2" value="DHTML">DHTML
+</form>
+<button onclick="getData('f1')">อ่านข้อมูลจาก form1</button>
+<p>
+Form2:
+<form name="f2">
+	<input type="text" name="txt2"><br>
+	<textarea name="txtarea"></textarea><br>
+	<input type="radio" name="choice" value="Ajax">Ajax
+	<input type="radio" name="choice" value="DHTML">DHTML
+	<br>
+	<select name="ss" multiple>
+		<option value="PHP">PHP</option>
+		<option value="ASP.NET">ASP.NET</option>
+	</select>
+</form>
+<button onclick="getData('f2')">อ่านข้อมูลจาก form2</button>
+
+</body>
+</html>
+
+		
+	

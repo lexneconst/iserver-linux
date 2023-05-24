@@ -1,0 +1,96 @@
+<html>
+<head>
+<script>
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	ajax.open(method, URL);
+	
+	ajax.setRequestHeader("Content-Type", 
+		"application/x-www-form-urlencoded");
+
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			ajaxCallback(displayId, ajax.responseText); 
+		}
+	}
+
+	ajax.send(data);
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId);
+ 	el.innerHTML = responseText;	
+}
+
+function order() {
+	var URL = "http://localhost/ajaxbook/chap6/data_array_ss.php";
+	URL += "?dummy=" + (new Date()).getTime();
+
+	var data = getFormData();
+	
+	ajaxLoad('post', URL, data, 'displayDv');
+}
+
+function getFormData() {
+
+	var data = "";
+	var el = null;
+
+	var num_food = frm.elements['food[]'].length;
+	for(i=0; i<num_food; i++) {
+		el = frm.elements['food[]'][i];
+		if(el.checked) {
+			data += "&" + el.name + "=";
+			data += encodeURI(el.value);
+		}
+	}
+	
+	el = frm.elements['drink[]'];
+	var num_drink = el.length;
+	var opt = null;
+	for(i=0; i<num_drink; i++) {
+		opt = el.options[i];
+		if(opt.selected) {
+			data += "&" + el.name + "=";
+			data += encodeURI(opt.text);
+		}
+	}
+
+	return data;
+}
+
+</script>
+</head>
+<body>
+<h2> Ajax Food Array </h2>
+
+<form id="frm" name="frm">
+
+อาหาร:<br>
+<input type="checkbox" name="food[]" value="ยำหัวใจมด">ยำหัวใจมด<br>
+<input type="checkbox" name="food[]" value="ผัดเลือดปู">ผัดเลือดปู<br>
+<input type="checkbox" name="food[]" value="แกงถึดทือ">แกงถึดทือ
+<p>
+เครื่องดื่ม:<br>
+<select name="drink[]" multiple>
+	<option>น้ำผลไม้</option>
+	<option>น้ำอัดลม</option>
+	<option>น้ำเปล่า</option>
+	<option>เบียร์</option>
+</select>
+<p>
+<input type="button" value="Order" onclick="order()" />
+</form>
+
+<p>
+<div id="displayDv"> </div>
+</body>
+</html>
+

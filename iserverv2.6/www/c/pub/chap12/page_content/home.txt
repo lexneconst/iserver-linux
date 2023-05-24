@@ -1,0 +1,8 @@
+	<br>
+	<p align="center" style="font:12pt;">
+
+	ยินดีต้อนรับสู่ Ajax Development Cyber
+
+	</p>
+
+	

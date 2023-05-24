@@ -1,0 +1,34 @@
+<html>
+<head>
+<style>
+	.unhilited { 
+		font-family: tahoma;
+		font-size: 12pt;
+		background-color: white;
+	}
+	.hilited {
+		font-size: 15pt;
+		background-color: yellow;
+		text-decoration: underline;
+	}
+</style>
+<script>
+function changeClass() {
+	var sp = document.getElementById("sp");
+	if(sp.className=="unhilited") {
+		sp.className = "hilited";
+	}
+	else {
+		sp.className = "unhilited";
+	}
+}
+</script>
+</head>
+<body >
+<center>
+<span id="sp" class="unhilited">Asynchronous JavaScript And XML</span>
+<p>
+<button onclick="changeClass()">hilited/unhilited</button>
+</center>
+</body>
+</html>

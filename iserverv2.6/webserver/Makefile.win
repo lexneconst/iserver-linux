@@ -1,0 +1,61 @@
+# Project: webserver
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o logs.o module.o config.o request.o cpath.o type.o page.o read.o dir.o ssl.o script.o
+LINKOBJ  = main.o logs.o module.o config.o request.o cpath.o type.o page.o read.o dir.o ssl.o script.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/iserver/iserverv2.5/lib" -L"D:/iserver/iserverv2.5/debug/bin"  -lcrypto -lssl -lcrypto.dll -lssl.dll -lws2_32 -llibcsp -llibar -llibsrv -pg -g3
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/iserver/iserverv2.5/include" -I"D:/openssl-3.0.5/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++" -I"D:/iserver/iserverv2.5/include" -I"D:/openssl-3.0.5/include"
+BIN      = ../debug/bin/iserver.exe
+CXXFLAGS = $(CXXINCS) -w -pg -g3 -D__WINCRYPT_H__=1 -DOPENSSL_SYS_WIN32=1
+CFLAGS   = $(INCS) -w -pg -g3 -D__WINCRYPT_H__=1 -DOPENSSL_SYS_WIN32=1
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+logs.o: logs.c
+	$(CC) -c logs.c -o logs.o $(CFLAGS)
+
+module.o: module.c
+	$(CC) -c module.c -o module.o $(CFLAGS)
+
+config.o: config.c
+	$(CC) -c config.c -o config.o $(CFLAGS)
+
+request.o: request.c
+	$(CC) -c request.c -o request.o $(CFLAGS)
+
+cpath.o: cpath.c
+	$(CC) -c cpath.c -o cpath.o $(CFLAGS)
+
+type.o: type.c
+	$(CC) -c type.c -o type.o $(CFLAGS)
+
+page.o: page.c
+	$(CC) -c page.c -o page.o $(CFLAGS)
+
+read.o: read.c
+	$(CC) -c read.c -o read.o $(CFLAGS)
+
+dir.o: dir.c
+	$(CC) -c dir.c -o dir.o $(CFLAGS)
+
+ssl.o: ssl.c
+	$(CC) -c ssl.c -o ssl.o $(CFLAGS)
+
+script.o: script.c
+	$(CC) -c script.c -o script.o $(CFLAGS)

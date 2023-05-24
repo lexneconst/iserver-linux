@@ -1,0 +1,47 @@
+<html>
+<head>
+<style>
+	#listbox {
+		position: absolute;
+		width: 200px;
+		border:solid 1px black;
+		background-color: #eeeeee;
+		display: none;
+	}
+</style>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function ajaxSubmit() {
+	var URL = 'auto_complete_ss.php';
+	var data = getQueryString("frm");
+	ajaxLoad('get', URL, data, 'msg');
+}
+function readText(el) {
+	document.getElementById('title').value = el.innerHTML;
+}
+function msOverList(el){
+	el.style.backgroundColor = '#ffffcc';
+	el.style.cursor = 'hand';
+}
+function msOutList(el){
+	el.style.backgroundColor = '#eeeeee';
+}
+function hideList() {
+	document.getElementById('listbox').style.display = 'none';
+}
+</script>
+</head>
+<body>
+<form name="frm">
+	<b>Ajax AutoComplete:</b><p>
+
+	<input type="text" id="title" name="title" size="30" 
+		onkeyup="ajaxSubmit()">
+
+	<button onclick="hideList()">OK</button>
+	<br>
+	<div id="listbox">&nbsp;</div>
+</form>
+<div id="msg"></div>
+</body>
+</html>

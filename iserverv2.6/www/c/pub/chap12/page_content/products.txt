@@ -1,0 +1,27 @@
+	
+	<table align="center">
+	<tr>
+		<td><img src="p1.gif"></td>
+		<td>
+			<b>Ajax Framework</b><br>
+			สุดยอดแห่ง Framework สำหรับ Web Programmer ผู้ต้องการพัฒนาเว็บไซต์โดยใช้ Ajax ...
+
+		</td>
+	</tr>
+	<tr>
+		<td><img src="p2.gif"></td>
+		<td>
+			<b>Ajax Applications</b><br>
+			ตัวอย่าง Applications เกี่ยวกับ Ajax สำเร็จรูปที่คุณสามารถประยุกต์ใช้กับเว็บไซต์ของท่านได้อย่าง...
+
+		</td>
+	</tr>
+	<tr>
+		<td><img src="p3.gif"></td>
+		<td>
+			<b>Ajax Webkits</b><br>
+			เครื่องมือที่จะช่วยให้คุณใช้เทคนิค Ajax ได้ง่ายยิ่งว่าการพลิกฝ่ามือ...
+
+		</td>
+	</tr>
+	</table>	

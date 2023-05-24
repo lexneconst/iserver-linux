@@ -1,0 +1,94 @@
+<html>
+<head>
+<script>
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	if(ajax==null) {
+		alert("Your browser doesn't support Ajax");
+		return;
+	}
+
+	ajax.open(method, URL);
+	
+	ajax.setRequestHeader("Content-Type", 
+		"application/x-www-form-urlencoded");
+
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			ajaxCallback(displayId, ajax.responseText); 
+		}
+	}
+
+	ajax.send(data);
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId);
+ 	el.innerHTML = responseText;	
+}
+
+function ajaxCall() {
+	var URL = 
+ 		"http://localhost/ajaxbook/chap6/thai_encode_ss.php?dummy=" + 
+ 			Math.random();
+	var data = null;
+	data = "name=" + encodeURI(frm.elements["name"].value);
+	var gd = "";
+	if(frm.elements['gender'][0].checked) {
+		gd = frm.elements['gender'][0].value;
+	}
+	else if(frm.elements['gender'][1].checked) {
+		gd = frm.elements['gender'][1].value;
+	}
+	
+	data += "&gender=" + encodeURI(gd);
+	data += "&address=" + encodeURI(frm.elements["address"].value);
+	var lang = "";
+	if(frm.elements['en'].checked) {
+		lang += frm.elements['en'].value + " ";
+	}
+	if(frm.elements['cn'].checked) {
+		lang += frm.elements['cn'].value + " ";
+	}
+	if(frm.elements['jp'].checked) {
+		lang += frm.elements['jp'].value + " ";
+	}
+	lang = encodeURI(lang);
+	data += "&lang=" + lang;
+	
+	ajaxLoad('post', URL, data, 'display');
+}
+</script>
+</head>
+<body>
+
+<form id="frm" name="frm">
+ชื่อ
+<input type="text" name="name">
+<p>
+เพศ
+<input type="radio" name="gender" value="ชาย" checked>ชาย
+<input type="radio" name="gender" value="หญิง">หญิง
+<p>
+ที่อยู่
+<br><textarea name="address" cols="40" rows="2"></textarea>
+<p>
+ภาษาต่างประเทศที่รู้<br>
+<input type="checkbox" name="en" value="ภาษาอังกฤษ">ภาษาอังกฤษ
+<input type="checkbox" name="cn" value="ภาษาจีน">ภาษาจีน
+<input type="checkbox" name="jp" value="ภาษาญี่ปุ่น">ภาษาญี่ปุ่น
+
+<p><button onclick="ajaxCall()">ส่งข้อมูล</button>
+</form>
+
+<div id="display"></div>
+
+</body>
+</html>

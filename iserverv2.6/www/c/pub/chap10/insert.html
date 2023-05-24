@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function formSubmit() {
+	var URL = "insert_ss.php";
+
+	var data = getFormData("frm");
+		
+	ajaxLoad('post', URL, data, 'displayDiv');
+}
+</script>
+</head>
+<body>
+
+<div id="displayDiv"></div>
+
+<form id="frm">
+ชื่อหนังสือ:<br>
+<input id="tt" type="text"><br>
+
+ผู้เขียน:<br>
+<input id="au" type="text"><br>
+
+ราคา:<br>
+<input id="pc" type="text">
+
+<p>
+
+<button onclick="formSubmit()">ส่งข้อมูล</button>
+
+</form>
+
+</body>
+</html>

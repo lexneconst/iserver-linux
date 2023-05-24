@@ -1,0 +1,54 @@
+# Project: libcsp
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = dllmain.o libcsp.o csprint.o isql.o init.o header.o sha2.o xspapi.o webapi.o
+LINKOBJ  = dllmain.o libcsp.o csprint.o isql.o init.o header.o sha2.o xspapi.o webapi.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/iserver/iserverv2.5/debug/bin" -llibar
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/iserver/iserverv2.5/include" -I"D:/openssl-3.0.5/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++" -I"D:/iserver/iserverv2.5/include" -I"D:/openssl-3.0.5/include"
+BIN      = ../debug/bin/libcsp.dll
+CXXFLAGS = $(CXXINCS) -w -DBUILDING_DLL=1 -D__WINCRYPT_H__=1
+CFLAGS   = $(INCS) -w -DBUILDING_DLL=1 -D__WINCRYPT_H__=1
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+DEF      = ../debug/bin/liblibcsp.def
+STATIC   = ../debug/bin/liblibcsp.a
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN) $(DEF) $(STATIC)
+
+$(BIN): $(LINKOBJ)
+	$(CC) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+
+dllmain.o: dllmain.c
+	$(CC) -c dllmain.c -o dllmain.o $(CFLAGS)
+
+libcsp.o: libcsp.c
+	$(CC) -c libcsp.c -o libcsp.o $(CFLAGS)
+
+csprint.o: csprint.c
+	$(CC) -c csprint.c -o csprint.o $(CFLAGS)
+
+isql.o: isql.c
+	$(CC) -c isql.c -o isql.o $(CFLAGS)
+
+init.o: init.c
+	$(CC) -c init.c -o init.o $(CFLAGS)
+
+header.o: header.c
+	$(CC) -c header.c -o header.o $(CFLAGS)
+
+sha2.o: sha2.c
+	$(CC) -c sha2.c -o sha2.o $(CFLAGS)
+
+xspapi.o: xspapi.c
+	$(CC) -c xspapi.c -o xspapi.o $(CFLAGS)
+
+webapi.o: webapi.c
+	$(CC) -c webapi.c -o webapi.o $(CFLAGS)

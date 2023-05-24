@@ -1,0 +1,68 @@
+<html>
+<head>
+<style> .err{color:red} </style>
+<script>
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	if(ajax==null) {
+		alert("Your browser doesn't support Ajax");
+		return;
+	}
+
+	ajax.open(method, URL);
+	if(method.toLowerCase()=="post") {
+		ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+	}
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			ajaxCallback(displayId, ajax.responseText); 
+		}
+	}
+
+	ajax.send(data);
+	
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId)
+	if(responseText=="ERROR") {
+		el.innerHTML = "ข้อมูลไม่ถูกต้องตามรูปแบบ";
+	}
+	else {
+		el.innerHTML = "";
+	}	
+}
+
+function checkData(data, source) {
+	var URL = 
+		"http://localhost/ajaxbook/chap7/regex.php?dummy=" + 
+ 			Math.random();
+
+	var d = "data=" + encodeURI(data);
+	d += "&source=" + source;
+	
+	ajaxLoad('post', URL, d, (source+'_'));
+}
+</script>
+</head>
+<body>
+
+<form name="frm">
+รหัสไปรษณีย์<br>
+<input type="text" id="zip" onblur="checkData(this.value, this.id)">
+<span id="zip_" class="err"></span>(รูปแบบ: xxxxx)
+<p>
+มือถือ<br>
+<input type="text" id="mobile" onblur="checkData(this.value, this.id)">
+<span id="mobile_" class="err"></span>(รูปแบบ: 08xxxxxxxxx)
+
+</form>
+</body>
+</html>

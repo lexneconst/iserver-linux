@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+	.warning {
+		color: red;
+		visibility: hidden;
+	}
+</style>
+<script>
+function check() {
+	if(document.getElementById("keyword").value=="") {
+		document.getElementById("msg").style.visibility = 
+ 			"visible";
+	}
+}
+
+function changeText() {
+	document.getElementById("msg").style.visibility = 
+ 		"hidden";
+}
+</script>
+</head>
+<body>
+<form>
+	<input type="text" id="keyword" size="20" 
+ 		onkeyup="changeText()">
+	<button onclick="check()">Search</button>
+	<div id="msg" class="warning">ท่านยังไม่ได้ใส่ข้อมูลค่ะ</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+<style> 
+	body, td {
+		font:10pt tahoma;
+	}
+</style>
+
+<script src="/ajaxbook/ajax_framework.js"></script>
+
+<script>
+function ajaxSubmit() {
+	var data = null;
+	var URL = "read_msg_ss.php";
+	ajaxLoad('get', URL, data, 'msg');	
+}
+</script>
+</head>
+<body bgcolor="#eeeeff">
+
+<div id="msg"></div>
+
+</body>
+</html>
+
+<script> setInterval("ajaxSubmit()", 5000); </script>
+	

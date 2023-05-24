@@ -1,0 +1,72 @@
+<html>
+<head>
+<script>
+
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	ajax.open(method, URL);
+	ajax.setRequestHeader("Content-Type", 
+ 		"application/x-www-form-urlencoded");
+
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			var ctype = ajax.getResponseHeader("content-type");
+			ctype = ctype.toLowerCase();
+			
+			if(ctype.match("text/plain")) {
+				ajaxCallback(displayId, ajax.responseText);
+			}
+			else if(ctype.match("text/javascript")) {
+				eval(ajax.responseText);
+			}
+		}
+	}
+		
+	ajax.send(data);
+	
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId);
+ 	el.innerHTML = responseText;
+}
+
+function ajaxCall() {
+	var URL = "http://localhost/ajaxbook/chap7/javascript_ss.php";
+	URL += "?dummy=" + (new Date()).getTime();
+	
+	var log = document.getElementById("login").value;
+	var pass = document.getElementById("password").value;
+	var data = "login=" + log + "&password=" + pass;
+
+	ajaxLoad('post', URL, data, 'displayDiv');
+}
+
+
+</script>
+</head>
+<body>
+
+
+<h3>Ajax Handling JavaScript From Server</h3>
+
+<form id="frm">
+Login: <input id="login" type="text"><br>
+Pswd: <input id="password" type="password"><br>
+<p>
+<button onclick="ajaxCall()">Submit</button>
+</form>
+
+<p>
+<div id="displayDiv">&nbsp;</div>
+
+
+</body>
+</html>

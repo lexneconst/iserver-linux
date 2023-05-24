@@ -1,0 +1,23 @@
+<form id="frm" name="frm">
+	 <input type="radio" name="rdo" value="Ajax" checked>
+ 	<input type="radio" name="rdo" value="JavaScript">
+ 	<input type="radio" name="rdo" value="XML">
+
+
+</form>
+
+<script>
+
+ 	var value = "";
+ 	var num_rdo = frm.elements['rdo'].length;
+
+ 	for(i=0; i<num_rdo; i++) {
+	 	var rdo = frm.elements['rdo'][i];
+	 	if(rdo.checked) {
+		 	value = rdo.value;
+ 		 	break;					
+	 	}
+ 	}
+
+	alert(value);
+</script>

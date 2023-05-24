@@ -1,0 +1,38 @@
+<html>
+<body>
+<head>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function ajaxSubmit() {
+	var data = getQueryString("frm");
+	var URL = "dynamic_option_ss.php";
+	ajaxLoad('get', URL, data, 'msg');
+}
+</script>
+</head>
+<body>
+<form name="frm">
+
+ภาค:
+<select name="religion" onchange="ajaxSubmit()">
+<option value="เหนือ">ภาคเหนือ</option>
+<option value="กลาง">ภาคกลาง</option>
+<option value="อีสาน">ภาคอีสาน</option>
+<option value="ใต้">ภาคใต้</option>
+</select>
+
+<p>
+
+จังหวัด:
+<select id="province" name="province">
+<option>*</option>
+</select>
+
+</form>
+
+<div id="msg">&nbsp;</div>
+<script>
+	ajaxSubmit();
+</script>
+</body>
+</html>

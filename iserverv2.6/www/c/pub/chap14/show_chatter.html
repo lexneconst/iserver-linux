@@ -1,0 +1,21 @@
+<html>
+<head>
+<style>
+	
+</style>
+<script src="/ajaxbook/ajax_framework.js"></script>
+<script>
+function ajaxSubmit() {
+	var data = null;
+	var URL = "read_chatter_ss.php";
+	ajaxLoad('get', URL, data, 'chatter');
+}
+</script>
+</head>
+<body bgcolor="#eeffee">
+<div id="chatter"></div>
+</body>
+</html>
+
+<script> setInterval("ajaxSubmit()", 13000); </script>
+	

@@ -1,0 +1,10 @@
+<form name="frm">
+<table>
+<tr><td>ชื่อผู้ติดต่อ</td><td><input type="text" name="name" size="50"></td></tr>
+<tr><td>Email</td><td><input type="text" name="email" size="50"></td></tr>
+<tr><td>หัวข้อที่ติดต่อ</td><td><input type="text" name="topic" size="50"></td></tr>
+<tr><td>รายละเอียด</td><td><textarea name="detail" cols="50" rows="4"></textarea></td></tr>
+</table>
+<p align=center>
+<button onclick="">ส่งข้อมูล</button>
+</form>

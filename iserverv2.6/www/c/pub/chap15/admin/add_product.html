@@ -1,0 +1,40 @@
+<html>
+<head>
+<script>
+function formSubmit() {
+	if(frm.elements['pdname'].value=="" || 
+		frm.elements['descr'].value=="" ||
+		frm.elements['price'].value=="") {
+
+		alert('ยังใส่ข้อมูลไม่ครบ');
+		return;
+	}
+	if(parseFloat(frm.elements['price'].value).toString()=="NaN") {
+		alert('ใส่ราคาไม่ถูกต้อง');
+		return;
+	}
+
+	frm.submit();
+	document.getElementById('indicator').innerHTML = 'กำลังส่งข้อมูล';
+}
+</script>
+</head>
+<body>
+<form name="frm" method="post" action="add_product_ss.php" 
+	enctype="multipart/form-data" target="ifrm">
+<table bgcolor="#eeeeff">
+<tr><td>ชื่อสินค้า:</td><td><input type="text" name="pdname" size="40"></td></tr>
+<tr valign="top"><td>คำอธิบาย:</td><td><textarea name="descr" cols="40" rows="3"></textarea></td></tr>
+<tr><td>ราคา:</td><td><input type="text" name="price"></td></tr>
+<tr><td>ภาพสินค้า:</td><td><input type="file" name="img" size="40"></td></tr>
+</table>
+<p>
+<button onclick="formSubmit()">ส่งข้อมูล</button>
+</form>
+<p>
+<div id="indicator" style="color:orange;">&nbsp;</div>
+
+<iframe name="ifrm" style="display:none;"> </iframe>
+
+</body>
+</html>

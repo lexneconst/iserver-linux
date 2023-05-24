@@ -1,0 +1,64 @@
+<html>
+<head>
+<style>
+	#popup_box {
+		width: 400px;
+		position: absolute;
+		background-color: powderblue;
+		border: solid 1px black;
+		padding: 5px;
+		display: none;
+		padding: 3px;
+		z-index: 10000;
+	}
+	#popup_msg {
+		border: solid 2px green;
+		background-color: white;
+		padding: 2px;
+	}
+</style>
+
+<script src="/ajaxbook/ajax_framework.js"> </script>
+
+<script>
+function showPopup(content) {
+	var el_box = document.getElementById("popup_box");	
+	el_box.style.left = event.clientX + "px";
+	el_box.style.top = event.clientY + "px";
+	if(el_box.style.display=='block') {
+		return;
+	}
+
+	var el_msg = document.getElementById("popup_msg");	
+	el_msg.innerHTML = "กำลังโหลดข้อมูล...";
+	
+	el_box.style.display = 'block';
+
+	loadContent(content);	
+	
+}
+
+function hidePopup() {
+	var el_box = document.getElementById("popup_box");
+	el_box.style.display = 'none';
+}
+
+function loadContent(content) {
+	var URL = "popup_ss.php";
+	var data = "content=" + content;
+	ajaxLoad("get", URL, data, "popup_msg");
+}
+</script>
+</head>
+<body>
+<img src="p1.gif" onmousemove="showPopup('ajax_fwk')" onmouseout="hidePopup()"><p>
+<img src="p2.gif" onmousemove="showPopup('ajax_app')" onmouseout="hidePopup()"><p>
+<img src="p3.gif" onmousemove="showPopup('ajax_kit')" onmouseout="hidePopup()"><p>
+
+<div id="popup_box">
+	<div id="popup_msg">&nbsp;</div>
+</div>
+
+</body>
+</html>
+

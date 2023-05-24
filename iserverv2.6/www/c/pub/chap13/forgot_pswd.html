@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function ajaxSubmit() {
+	var data = getFormData("frm");
+	
+	var URL = "forgot_pswd_ss.php";
+	
+	ajaxLoad('post', URL, data, 'msg');
+}
+</script>
+</head>
+<body style="text-align:center;">
+<h2>ลืมรหัสผ่าน?..</h2>
+
+<div id="msg"></div>
+<form name="frm">
+กรุณาใส่ Email ที่ท่านกำหนดตอนสมัครสมาชิก<br>
+<input type="text" name="email" size="40">
+<button onclick="ajaxSubmit()">ตกลง</button>
+<p>
+***รหัสผ่านจะถูกส่งไปทางอีเมล์นี้***
+<p>
+<a href="index.php">หน้าแรก</a>
+</form>
+
+</body>
+</html>

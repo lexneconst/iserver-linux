@@ -1,0 +1,86 @@
+<html>
+<head>
+<style>
+	body, td, div, a {
+		font:10pt tahoma;
+	}
+	.tab_active, .tab_inactive {		
+		font: 12pt;						
+		padding-top: 5px;
+		padding-left: 25px;
+		padding-right: 25px;
+		text-align: center;
+		margin-right:3px;
+	}
+	.tab_active {										
+		background-color: powderblue;
+		color: red;
+	}
+	.tab_inactive {										
+		background-color: #eeeeee;
+		color: blue;
+		cursor: hand;
+	}
+	.tab_panel { 					
+		width: 500px;
+		padding: 10px;
+		background-color: powderblue;
+		text-align:center;
+	}
+</style>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+
+var cur_tab_active = null;									
+function clickTab(tab, content) {
+	if(tab.className=="tab_inactive") {			
+		cur_tab_active.className = "tab_inactive";
+		cur_tab_active = tab;
+		tab.className = "tab_active";
+	}
+	else {	
+		return;
+	}
+
+	loadContent(content);	
+}
+
+function loadContent(page) {
+	var URL = "tab_ss.php";
+	var data = "content=" + page;
+	ajaxLoad("get", URL, data, "content");
+
+	document.getElementById('content').innerHTML = 
+ 		"<p align=center>กำลังโหลดข้อมูล...";
+}
+</script>
+</head>
+<body>
+<br> <!--
+<div style="font:bold 16pt;">บริษัท Ajax จำกัด (มหาชน) </div>
+<br>
+
+<div style="font:14pt;">ข้อมูลการติดต่อ</div>
+<p> -->
+
+<span id="tab_address" class="tab_active" 
+ 	onclick="clickTab(this, 'address')">ที่อยู่
+</span>
+	
+<span id="tab_form" class="tab_inactive" 
+ 	onclick="clickTab(this, 'contact_form')">แบบฟอร์มติดต่อ
+</span>
+		
+<span id="tab_map" class="tab_inactive" 
+ 	onclick="clickTab(this, 'map')">แผนที่บริษัท
+</span> 	
+
+
+<div id="content" class="tab_panel"> 	</div>
+
+</body>
+</html>
+<script> 
+	var cur_tab_active = document.getElementById("tab_address"); 
+	loadContent('address');
+</script>

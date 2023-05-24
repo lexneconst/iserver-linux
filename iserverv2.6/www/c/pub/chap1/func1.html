@@ -1,0 +1,36 @@
+<html>
+<body>
+<head>
+<script>
+function calculator(sign, num1, num2) {
+	
+	switch(sign) {
+		case "+":
+			return num1 + num2; break;
+		case "-":
+			return num1 - num2; break;
+		case "*":
+			return num1 * num2; break;
+		case "/":
+			return num1 / num2; break;
+		default:
+			return "";
+	}
+}
+</script>
+</head>
+<body>
+5 + 15 = 
+<script> document.write(calculator("+", 5, 15)); </script><br>
+
+5 - 15 = 
+<script> document.write(calculator("-", 5, 15)); </script><br>
+
+5 * 15 = 
+<script> document.write(calculator("*", 5, 15)); </script><br>
+
+5 / 15 = 
+<script> document.write(calculator("/", 5, 15)); </script>
+
+</body>
+</html>

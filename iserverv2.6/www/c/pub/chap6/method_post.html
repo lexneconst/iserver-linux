@@ -1,0 +1,64 @@
+<html>
+<head>
+<script>
+
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	if(ajax==null) {
+		alert("Your browser doesn't support Ajax");
+		return;
+	}
+	ajax.open(method, URL);
+	ajax.setRequestHeader("Content-Type", 
+ 		"application/x-www-form-urlencoded");
+
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			ajaxCallback(displayId, ajax.responseText);
+		}
+	}
+		
+	ajax.send(data);
+	
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId);
+ 	el.innerHTML = responseText;
+}
+
+function login() {
+	var URL = "http://localhost/ajaxbook/chap6/method_post_ss.php";
+	URL += "?rand=" + Math.random();
+
+	var log = document.getElementById("login").value;
+	var pass = document.getElementById("password").value;
+	var data = "login=" + log + "&password=" + pass;
+
+	ajaxLoad('post', URL, data, 'msg');
+}
+</script>
+</head>
+<body>
+
+<div style="width:250px; text-align:right;">
+<h3>Ajax Post Login</h3>
+
+Login:<input id="login" type="text"><br>
+Password:<input id="password" type="password"><br>
+
+<button onclick="login()">Submit</button>
+
+<p>
+<div id="msg">&nbsp;</div>
+</div>
+
+</body>
+</html>

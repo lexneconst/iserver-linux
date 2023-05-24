@@ -1,0 +1,17 @@
+<html>
+<body>
+<script>
+	var book = {	title:"Ajax", 
+ 		 	author:"Bill", 
+			price:2000, 
+			pages:500 
+		  };
+ 	book.isbn = 1234567890;
+
+	for(prop in book) {
+		document.write("<b>" + prop + "</b>:");
+		document.write(book[prop] + "<br>");
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+	<br>
+	<p align="center">
+	บริษัท Ajax จำกัด (มหาชน)
+
+	<br><br>
+
+	123/456  ซอยมหาชน  ถนน...
+
+	<br>
+
+	Email: <a href="mailto:ajaxcompany@hotmail.com">ajaxcompany@hotmail.com</a>
+
+	</p>

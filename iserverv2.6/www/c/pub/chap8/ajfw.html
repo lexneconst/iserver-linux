@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function ajaxCall() {
+
+	var data = getFormData("frm");
+
+	var URL = "ajfw_beta_ss.php";
+
+	ajaxLoad("post", URL, data, "msg");
+}
+</script>
+</head>
+<body>
+
+<form id="frm">
+Login:<br>
+<input type="text" id="login"><br>
+Pswd:<br>
+<input type="password" id="pswd">
+<p>
+<button onclick="ajaxCall()">เข้าสู่ระบบ</button>
+</form>
+
+<div id="msg">&nbsp;</div>
+
+</body>
+</html>

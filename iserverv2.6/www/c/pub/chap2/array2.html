@@ -1,0 +1,52 @@
+<html>
+<head>
+<script>
+function summation(data) {
+	var sum = 0;
+	for(x in data) {
+		sum += data[x];
+	}
+	return sum;
+}
+
+function average(data) {
+	var num = 0;
+	for(x in data) {
+		num++;
+	}
+	var sum = summation(data);
+	return sum/num;
+}
+
+function arrayToString(data) {
+	var str = "";
+	for(x in data) {
+		if(x > 0) {
+			str += ", ";
+		}
+		str += data[x];
+	}	
+	return str;
+}
+</script>
+</head>
+<body>
+<script>
+	var a1 = [10, 20, 30, 40, 50];
+	var a2 = [11, 22, 33];
+	var a3 = [66, 99, 108, 1009];
+	document.write("ข้อมูล:" + arrayToString(a1));
+	document.write(" ผลรวม = " + summation(a1));
+	document.write(" ค่าเฉลี่ย = " + average(a1) + "<br>");
+
+	document.write("ข้อมูล:" + arrayToString(a2));
+	document.write(" ผลรวม = " + summation(a2));
+	document.write(" ค่าเฉลี่ย = " + average(a2) + "<br>");
+
+	document.write("ข้อมูล:" + arrayToString(a3));
+	document.write(" ผลรวม = " + summation(a3));
+	document.write(" ค่าเฉลี่ย = " + average(a3) + "<br>");
+
+</script>
+</body>
+</html>

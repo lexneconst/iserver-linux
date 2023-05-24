@@ -1,0 +1,66 @@
+<html>
+<head>
+<script>
+
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	if(ajax==null) {
+		alert("Your browser doesn't support Ajax");
+		return;
+	}
+
+	ajax.open(method, URL);
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+
+			ajaxCallback(displayId, ajax.responseText); 
+		}
+	}
+
+	ajax.send(data);
+	
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId);
+ 	el.value = responseText;	
+}
+
+function calculate(sign) {
+	var URL = "http://localhost/ajaxbook/chap6/method_get_ss.php";
+	URL += "?op1=" + document.getElementById("op1").value;
+	URL += "&op2=" + document.getElementById("op2").value;
+	URL += "&sign=" + sign;
+
+	ajaxLoad('get', URL, null, 'result');
+}
+
+</script>
+</head>
+
+<body>
+
+<div style="width:250px;text-align:right;">
+<h3>Ajax Calculator</h3>
+
+Operand 1: <input id="op1" type="text"><br>
+Operand 2: <input id="op2" type="text"><br>
+
+<button onclick="calculate('plus')">+</button>
+<button onclick="calculate('minus')">-</button>
+<button onclick="calculate('multiply')">*</button>
+<button onclick="calculate('divide')">/</button><br>
+
+Result: <input id="result" type="text" disabled>
+
+</div>
+</body>
+
+</html>

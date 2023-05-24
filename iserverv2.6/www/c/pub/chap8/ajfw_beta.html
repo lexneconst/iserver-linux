@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="ajax_framework_beta.js"> </script>
+<script>
+function ajaxCall() {
+	var login = document.getElementById('login').value;
+	var pswd = document.getElementById('pswd').value;
+
+	var data = "login=" + login + "&pswd=" + pswd;
+
+	var URL = "ajfw_beta_ss.php";
+
+	ajaxLoad("post", URL, data, "msg");
+}
+</script>
+</head>
+<body>
+
+<form id="frm">
+Login:<br>
+<input type="text" id="login"><br>
+Pswd:<br>
+<input type="password" id="pswd">
+<p>
+<button onclick="ajaxCall()">เข้าสู่ระบบ</button>
+</form>
+
+<div id="msg">&nbsp;</div>
+
+</body>
+</html>

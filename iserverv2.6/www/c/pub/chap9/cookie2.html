@@ -1,0 +1,92 @@
+<html>
+<head>
+<style> 
+ 	.product {
+		background-color:#eeeeee;
+		font:bold 15pt;
+		border:solid 1px black;
+		padding:10px;
+	}
+</style>
+<script>
+var ajax = null;
+if(window.ActiveXObject) {		
+	ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+}
+else if(window.XMLHttpRequest) {		
+	ajax = new XMLHttpRequest();	
+}
+
+function ajaxLoad(method, URL, data, displayId) {
+	if(ajax==null) {
+		alert("Your browser doesn't support Ajax");
+		return;
+	}
+
+	ajax.open(method, URL);
+	if(method.toLowerCase()=="post") {
+		ajax.setRequestHeader("Content-Type", 
+ 			"application/x-www-form-urlencoded")
+	}
+	ajax.onreadystatechange = function() {
+	 	if(ajax.readyState==4 && ajax.status==200) {
+			ajaxCallback(displayId, ajax.responseText); 
+		}
+	}
+
+	ajax.send(data);
+	
+}
+
+function ajaxCallback(displayId, responseText) {
+	var el = document.getElementById(displayId)
+	el.innerHTML = "สินค้าในรถเข็น<p>" + responseText;	
+}
+
+function doCart(product, action) {
+	var URL = 
+		"http://localhost/ajaxbook/chap7/" +
+		action + "?dummy=" + Math.random();
+
+	var data = "p=" + encodeURI(product);
+
+	ajaxLoad('post', URL, data, 'cart');
+}
+</script>
+</head>
+<body>
+<table width="500">
+<tr valign="top"><td width="300">
+<table cellspacing="3" cellpadding="3">
+<tr><td><div class="product">สินค้า 1</div></td>
+<td>50 บาท<br>
+<button onclick="doCart('p1:สินค้า 1', 'addcart.php')">หยิบใส่รถเข็น</button>
+</td>
+</tr>
+<tr><td><div class="product">สินค้า 2</div></td>
+<td>100 บาท<br>
+<button onclick="doCart('p2:สินค้า 2', 'addcart.php')">หยิบใส่รถเข็น</button>
+</td>
+</tr>
+<tr><td><div class="product">สินค้า 3</div></td>
+<td>150 บาท<br>
+<button onclick="doCart('p3:สินค้า 3', 'addcart.php')">หยิบใส่รถเข็น</button>
+</td>
+</tr>
+<tr><td><div class="product">สินค้า 4</div></td>
+<td>200 บาท<br>
+<button onclick="doCart('p4:สินค้า 4', 'addcart.php')">หยิบใส่รถเข็น</button>
+</td>
+</tr>
+<tr><td><div class="product">สินค้า 5</div></td>
+<td>250 บาท<br>
+<button onclick="doCart('p5:สินค้า 5', 'addcart.php')">หยิบใส่รถเข็น</button>
+</td>
+</tr>
+</table>
+</td>
+<td id="cart" bgcolor="#eeeeff">สินค้าในรถเข็น</td>
+</tr>
+</table>
+</body>
+</html>

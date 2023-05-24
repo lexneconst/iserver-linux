@@ -1,0 +1,94 @@
+<html>
+<head>
+<style>
+	button {
+		border: solid #aaaaaa 1px;
+		color:blue;
+		cursor:hand;
+	}
+	textarea {
+		width:400px; 
+		height:100px;
+	}
+	.span {
+		background-color:#eeeeee;
+		padding:3px;
+	}
+</style>
+<script>
+function changeFontFamily() {
+	var sel = document.getElementById("ffm");
+	var text = document.getElementById("text");
+	text.style.fontFamily = 
+ 		sel.options[sel.selectedIndex].value;
+}
+function changeFontSize() {
+	var sel = document.getElementById("fsz");
+	var text = document.getElementById("text");
+	text.style.fontSize = 
+ 		sel.options[sel.selectedIndex].value + "pt";
+}
+function fontBold() {
+	var text = document.getElementById("text");
+	if(text.style.fontWeight=="bold") {
+		text.style.fontWeight = "normal";
+	}
+	else {
+		text.style.fontWeight = "bold";
+	}
+	toggle();
+}
+function fontStyle() {
+	var text = document.getElementById("text");
+	if(text.style.fontStyle=="italic") {
+		text.style.fontStyle = "normal";
+	}
+	else {
+		text.style.fontStyle = "italic";
+	}
+	toggle();
+}
+function textDecoration() {
+	var text = document.getElementById("text");
+	if(text.style.textDecoration=="underline") {
+		text.style.textDecoration = "none";
+	}
+	else {
+		text.style.textDecoration = "underline";
+	}
+	toggle();
+}
+function toggle() {
+ 	var src = event.srcElement;
+
+	if(src.style.color!="red") {
+		src.style.color = "red";
+	}
+	else {
+		src.style.color = "blue";
+	}
+}
+</script>
+</head>
+<body>
+<span class="span">
+	Font:
+	<select id="ffm" onchange="changeFontFamily()">
+		<option value="tahoma">Tahoma</option>
+		<option value="'cordia new'">Cordia New</option>
+		<option value="jasmineUPC">Jasmine UPC</option>
+	</select>
+	Size:
+	<select id="fsz" onchange="changeFontSize()">
+		<option value="10">10</option>
+		<option value="15">15</option>
+		<option value="20">20</option>
+	</select>
+	&nbsp;&nbsp;
+	<button onclick="fontBold()">bold</button>&nbsp;
+	<button onclick="fontStyle()">italic</button>&nbsp;	
+	<button onclick="textDecoration()">underline</button>
+</span><p>
+<textarea id="text">Ajax เป็นเทคนิคในการโหลดข้อมูลเพื่อ Update เนื้อหาบางส่วนของเพจ</textarea>
+</body>
+</html>

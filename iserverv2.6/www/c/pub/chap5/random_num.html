@@ -1,0 +1,28 @@
+<html>
+<head>
+<script>
+	
+	var ajax = null;					
+	if(window.ActiveXObject) {		
+		ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+	}
+	else if(window.XMLHttpRequest) {		
+		ajax = new XMLHttpRequest();	
+	}
+
+	ajax.open("get", "random_num_ss.php");
+	
+	ajax.onreadystatechange = function() {
+		if(ajax.status==200 && ajax.readyState==4) {
+			alert("เลขสุ่มที่ได้คือ: " + ajax.responseText);
+		}
+	};
+
+	ajax.send(null);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

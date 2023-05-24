@@ -1,0 +1,23 @@
+<html>
+<body>
+<script>
+	var year = prompt("Please enter the year:", "");
+  	if(year > 0) {
+ 		if((year % 100) != 0) {
+ 			if((year % 4) == 0) {
+ 				document.write(year + " is a leap year");
+ 			}
+ 			else {
+ 				document.write(year + " is not a leap year");
+ 			}
+ 		}
+ 		else if((year % 400) == 0) {
+ 			document.write(year + " is a  leap year");
+ 		}
+   	}
+ 	else { // year <  0
+		document.write("Error!...The year must be greater than 0");
+ 	}
+</script>
+</body>
+</html>

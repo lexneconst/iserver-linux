@@ -1,0 +1,34 @@
+<html>
+<head>
+<script>
+function createRow(txt1, txt2) {
+	var tr = document.createElement("tr");
+	tr.height = "40";
+
+	var col1 = document.createElement("td");
+	var col2 = document.createElement("td");
+
+	col1.setAttribute("bgColor", "#cccccc");
+	col2.bgColor = "#eeeeee";
+	col2.vAlign = "bottom";
+
+	col1.appendChild(document.createTextNode(txt1));
+	col2.appendChild(document.createTextNode(txt2));
+
+	tr.appendChild(col1);
+	tr.appendChild(col2);
+
+	var tb = document.getElementById("table1");
+	tb.tBodies(0).appendChild(tr);
+}
+</script>
+<body>
+<table id="table1" border="1" align="center">
+<tr><th>column 1</td><th>column 2</td></tr>
+</table>
+<script>
+	createRow("123", "456");
+	createRow("abc", "def");
+</script>
+</body>
+</html>

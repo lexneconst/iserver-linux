@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+	body, td, div {
+		font:10pt tahoma;
+	}
+</style>
+
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function loadContent(content) {
+	var URL = "page_content_ss.php";
+	var data = "content=" + content;
+	ajaxLoad("get", URL, data, "content");
+
+	document.getElementById('content').innerHTML = "กำลังโหลดข้อมูล...";
+}
+</script>
+</head>
+<body>
+<table width="650">
+<tr>
+	<td colspan="2" 
+ 		style="font:bold 16pt; border-bottom:solid 1px black;">
+	
+		บริษัท Ajax จำกัด (มหาชน)
+	</td>
+</tr>
+<tr valign="top">
+	<td width="150" bgcolor="#eeeeff" 
+ 		style="border-right:solid 1px black; padding:10px; font:bold 10pt;">
+	
+	&#9658;&nbsp;<a href="javascript: loadContent('home')">หน้าแรก</a><p>
+	&#9658;&nbsp;<a href="javascript: loadContent('profile')">เกี่ยวกับบริษัท</a><p>
+	&#9658;&nbsp;<a href="javascript: loadContent('products')">ผลิตภัณฑ์</a><p>
+	&#9658;&nbsp;<a href="javascript: loadContent('contact')">ติดต่อ</a>
+
+	</td>
+
+	<td width="500" id="content">...ส่วนแสดงเนื้อหา...</td>
+
+</tr>
+<tr>
+	<td colspan="2" align="center" 
+		style="border-top:solid 1px black;">
+		<br>
+		&copy;&nbsp;Ajax
+	</td>
+</tr>
+</table>
+
+</body>
+</html>
+
+<script>
+	loadContent('home');
+</script>

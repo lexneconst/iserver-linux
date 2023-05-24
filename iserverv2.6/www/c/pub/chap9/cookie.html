@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+
+<script>
+function signin() {
+	var URL = "signin_ss.php";
+	
+	var data = getFormData("frm");
+
+	ajaxLoad('post', URL, data, 'displayDiv');
+}
+
+function getStoredLogin() {
+	var URL = "getcookie_ss.php";
+	
+	var data = null;
+	
+	ajaxLoad('post', URL, data, 'displayDiv');
+}
+</script>
+</head>
+<body>
+
+<h3>Ajax Storing Login</h3>
+
+<form id="frm">
+Login: <input id="login" type="text"><br>
+Pswd: <input id="password" type="password">
+
+<p>
+<input type="checkbox" id="check_login">เก็บ Login ไว้ที่เครื่องนี้
+
+<p>
+<button onclick="signin()">Submit</button>
+</form>
+
+<p>
+<div id="displayDiv">&nbsp;</div>
+</body>
+</html>
+
+<script>
+	getStoredLogin();
+</script>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<script>
+var balance = 0;
+
+function invalidAmount(amount) {
+	if(amount >= 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function deposit(amount) {
+	if(invalidAmount(amount)) {
+		balance += amount;
+	}
+}
+
+function withdraw(amount) {
+	if(invalidAmount(amount) && (amount <= balance)) {
+		balance -= amount;
+	}
+}
+
+function action(act, amount) {
+	if(act=="d") {
+		deposit(amount);
+		document.write("½Ò¡à§Ô¹: "  +  amount + " ÂÍ´¤§àËÅ×Í: " + balance);
+	}
+	else if(act=="w") {
+		withdraw(amount);
+		document.write("¶Í¹à§Ô¹: "  +  amount + " ÂÍ´¤§àËÅ×Í: " +  balance);
+	}
+}
+</script>
+</head>
+<body>
+
+<li><script> action("d", 1000); </script>
+<li><script> action("w", 300); </script>
+<li><script> action("w", -800); </script>
+<li><script> action("d", 500); </script>
+<li><script> action("d", -1000); </script>
+<li><script> action("w", 5000); </script>
+
+</body>
+</html>

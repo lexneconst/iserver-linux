@@ -1,0 +1,16 @@
+<html>
+<head>
+<script>
+function disabledRightClick() {
+	if (event.button==2) { 
+		alert('This page is fully protected!'); 
+		return false;
+	} 
+	return true; 
+}
+</script>
+</head>
+<body onmousedown="disabledRightClick()">
+<h2>This page is right click protected!</h2>
+</body>
+</html>

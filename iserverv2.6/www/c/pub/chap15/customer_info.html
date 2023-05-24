@@ -1,0 +1,50 @@
+<html>
+<head>
+<style> 
+	input, textarea {
+		background-color:#eeeeee;
+	}
+</style>
+<script src="/ajaxbook/ajax_framework.js"> </script>
+<script>
+function ajaxSubmit() {
+	var data = getFormData("frm");
+	var URL = 'customer_info_ss.php';
+	ajaxLoad('post', URL, data, 'msg');
+}
+</script>
+</head>
+<body><center>
+<div style="width:500px;text-align:left;">
+
+<h2>Ajax Shopping Cart</h2>
+<form name="frm">
+<span style="font:bold 14pt;">ข้อมูลผู้สั่งซื้อสินค้า</span>
+<p>
+ชื่อ:<br>
+<input type="text" name="name" size="50">
+<br>
+ที่อยู่:<br>
+<textarea name="address" cols="50" rows="4"></textarea>
+<br>
+โทร:<br>
+<input type="text" name="phone" size="50">
+<br>
+Email:<br>
+<input type="text" name="email" size="50">
+<p>
+วิธีการชำระเงิน:<br>
+<input type="radio"  name="payment" value="โอนผ่านธนาคาร" checked>โอนผ่านธนาคาร - 
+		[ชื่อบัญชี ... เลขที่บัญชี ...ธนาคาร...สาขา...]<br>
+
+<input type="radio"  name="payment" value="ธนาณัติ">ธนาณัติ - 
+		[สั่งจ่าย...ในนาม...]
+<p>
+<button onclick="ajaxSubmit()">ส่งข้อมูล</button><p>
+<a href="shopping_cart.php">ยกเลิก</a>
+
+</form>
+</div>
+<div id="msg" style="width:500px;font:12pt;background-color:#eeeeee;">&nbsp;</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<script src="/ajaxbook/tw-sack.js"> </script>
+<script>
+function ajaxCall() {
+	var sk = new sack();
+	sk.method = "get";
+	sk.requestFile = "test_sack.php";
+	sk.element = "displayDv";
+	
+	var data = "x=1&y=2";
+	sk.runAJAX(data);
+
+}
+</script>
+</head>
+<body>
+
+
+<button onclick="ajaxCall()">Calculate</button>
+<div id="displayDv"></div>
+
+</body>
+</html>

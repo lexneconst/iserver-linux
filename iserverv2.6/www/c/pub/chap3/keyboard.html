@@ -1,0 +1,20 @@
+<html>
+<head>
+<script>
+function isValidKey() {
+	var keyCode = event.keyCode;
+	// 0 => 48
+	// 9 => 57
+	if(keyCode < 48 || keyCode > 57) {
+		window.status = "Key invalid!!!";
+		alert("กรุณาเลือกปุ่ม 0-9 เท่านั้น");
+	}
+	else {
+		window.status = String.fromCharCode(keyCode);
+	}
+}
+</script>
+</head>
+<body onkeydown="isValidKey()">
+</body>
+</html>

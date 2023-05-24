@@ -1,0 +1,39 @@
+<html>
+<head>
+<script>
+var grand_total = 0;
+function calSubTotal(p, q) {
+	var t = p * q;
+	grand_total += t;
+	return t;
+}
+
+function printCell(data) {
+	document.write("<td>" + data + "</td>");
+}
+</script>
+</head>
+<body>
+<table border="1" align="center">
+<tr><th>ชื่อสินค้า</th><th>ราคา</th><th>จำนวนที่ขายได้</th><th>รวม</th></tr>
+<script>	
+	//[ชื่อสินค้า, ราคา, จำนวนที่ขายได้]
+	var items = [["สินค้า 1", 100, 15], 
+			["สินค้า 2", 150, 10], ["สินค้า 3", 200, 5], 
+			["สินค้า 4", 50, 10], ["สินค้า 5", 300, 1]];
+	for(i=0; i<5; i++) {
+		document.write("<tr>");
+		for(j=0; j<3; j++) {
+			printCell(items[i][j]);
+		}
+		printCell(calSubTotal(items[i][1], items[i][2]));
+		document.write("</tr>");
+	}
+</script>
+<tr bgcolor="#dddddd">
+	<td colspan="3">รวมยอดขาย</td>
+	<td><script> document.write(grand_total); </script></td>
+</tr>
+</table>
+</body>
+</html>

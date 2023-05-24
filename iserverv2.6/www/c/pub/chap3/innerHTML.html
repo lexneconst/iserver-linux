@@ -1,0 +1,28 @@
+<html>
+<head>
+<style> 
+ 	#myspan {
+		background-color: #eeeeee; 
+		border: solid 1px black;
+		padding: 5px; 
+		font: bold 30pt;
+		cursor:hand;
+	}
+</style>
+<script>
+function clickSpan() {
+	var span = document.getElementById("myspan");
+	var text = span.innerHTML;
+	if(text=="เข้าสู่ระบบ") {
+		span.innerHTML = "ออกจากระบบ";
+	}
+	else {
+		span.innerHTML = "เข้าสู่ระบบ";
+	}
+}
+</script>
+</head>
+<body>
+<span id="myspan" onclick="clickSpan()">เข้าสู่ระบบ</span>
+</body>
+</html>

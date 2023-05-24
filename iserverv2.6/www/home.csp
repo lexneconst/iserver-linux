@@ -1,0 +1,21 @@
+
+<html>
+<head> </head>
+
+<title><# echo "test csp language"; #></title>
+<body>
+<#
+   echo "abcde";
+#>
+<#
+   
+   echo "IP ${REMOTE_ADDR}";
+   print "12345";
+#>
+<# cache("data"); #>
+
+</body>
+</html>
+
+
+

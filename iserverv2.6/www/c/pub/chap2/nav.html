@@ -1,0 +1,15 @@
+<html>
+<body>
+<script>
+
+	var app_ver = navigator.appVersion;
+	var arr_ver = app_ver.split(";");
+	//ตัวอย่างค่าที่ได้ เช่น " MSIE x.x"
+	var ver = arr_ver[1].split(" ");
+	var version = ver[2];
+	//ใช้อาร์เรย์ลำดับที่ 2 เพราะหน้า MSIE มีช่องว่าง 1 ช่องรวมแล้วมีช่องว่างทั้งหมด 2 ช่อง
+	alert("ขณะนี้ท่านกำลังใช้บราวเซอร์เวอร์ชัน:  " +  version);
+		
+</script>
+</body>
+</html>

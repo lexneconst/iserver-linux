@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="/ajaxbook/ajax_framework.js"></script>
+<script>
+function ajaxSubmit() {
+	var data = getFormData("frm");
+
+	var URL = "add_nickname_ss.php";
+
+	ajaxLoad('post', URL, data, 'msg');	
+}
+</script>
+</head>
+<body>
+<center>
+<h1>Ajax Live Chat</h1>
+
+<div id="msg" style="color:red"></div>
+<div style="background-color:#eeeeff;padding:5px;">
+<form name="frm">
+	ใส่ชื่อที่นี่
+	<input type="text" name="nickname" size="30" maxlength="30">
+	<button onclick="ajaxSubmit()"> ตกลง </button>
+</form>
+</div>
+
+</body>
+</html>

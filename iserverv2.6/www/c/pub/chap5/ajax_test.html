@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+	var ajax = null;					
+	if(window.ActiveXObject) {		
+		ajax = new ActiveXObject("Microsoft.XMLHTTP");	
+	}
+	else if(window.XMLHttpRequest) {		
+		ajax = new XMLHttpRequest();	
+	}
+
+	if(ajax != null) {
+		alert("Your browser support Ajax");
+	}
+	else {
+		alert("Your browser doesn't support Ajax");
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

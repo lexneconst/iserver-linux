@@ -1,0 +1,21 @@
+<html
+<body>
+<script>
+	var str1 = "www.jobgle.com ";
+	var ar = str1.split(".");
+	document.write(str1 + "=> split(\".\") => ");
+document.write("[" + ar.toString() + "]");
+	document.write("<p>");
+
+	var str2 = "01/06/07 20:35:52";
+	var ar = str2.split(" "); //แยก str2 ด้วยช่องว่าง
+ 	//ผลที่ได้คือ ar[0] = "01/06/07" และ ar[1] = "20:35:52"
+	//แล้วนำ ar[1] ไปแยกต่อ
+	var time = ar[1].split(":");
+	document.write("จากข้อมูล " + str2 + "<br>");
+	document.write("แสดงว่าเหตุการณ์เกิดเมื่อเวลา " + time[0] + " นาฬิกา ");
+	document.write(time[1] + " นาที ");
+	document.write(time[2] + " วินาที ");
+</script>
+</body>
+</html>
